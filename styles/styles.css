@@ -96,9 +96,102 @@ body {
 }
 
 /* main-container */
+.grid-container {
+    width: 600px;
+    height: 466px;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    
+}
+.box{
+    width: 185px;
+    height: 170px;
+}
+.img-1{
+    background-image: url("../images/1.jpg");
+    background-size: cover;
+}
+.img-2{
+    background-image: url("../images/2.jpg");
+    background-size: cover;
+}
+.img-3{
+    background-image: url("../images/3.jpg");
+    background-size: cover;
+}
+.img-4{
+    background-image: url("../images/4.jpg");
+    background-size: cover;
+}
+.img-5{
+    background-image: url("../images/5.jpg");
+    background-size: cover;
+}
+.img-6{
+    background-image: url("../images/6.jpg");
+    background-size: cover;
+}
+.img-7{
+    background-image: url("../images/7.jpg");
+    background-size: cover;
+}
+.img-8{
+    background-image: url("../images/8.jpg");
+    background-size: cover;
+}
+.img-9{
+    background-image: url("../images/9.jpg");
+    background-size: cover;
+}
+.img-3{
+    background-image: url("../images/3.jpg");
+    background-size: cover;
+}
+.img-10{
+    background-image: url("../images/10.jpg");
+    background-size: cover;
+}
+.img-11{
+    background-image: url("../images/11.jpg");
+    background-size: cover;
+}
+.img-12{
+    background-image: url("../images/12.jpg");
+    background-size: cover;
+}
+.img-13{
+    background-image: url("../images/13.jpg");
+    background-size: cover;
+}
+.img-14{
+    background-image: url("../images/14.jpg");
+    background-size: cover;
+}
+.img-15{
+    background-image: url("../images/15.jpg");
+    background-size: cover;
+}
+.img-16{
+    background-image: url("../images/16.jpg");
+    background-size: cover;
+}
+.img-17{
+    background-image: url("../images/17.jpg");
+    background-size: cover;
+}
+.img-18{
+    background-image: url("../images/18.jpg");
+    background-size: cover;
+}
+
+
+/* main-container editor */
 
 .main-container {
     height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .main {
@@ -110,6 +203,11 @@ body {
 .canvas-container {
     background-color: burlywood;
     margin: 12px;
+   
+}
+.icon{
+    width: 30px;
+    height: 30px;
 }
 
 /* main-footer */
