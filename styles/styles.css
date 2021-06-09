@@ -1,0 +1,154 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Fonts */
+
+@font-face {
+    font-family: montserrat;
+    src: url(/fonts/montserrat/MontserratAlternates-Regular.ttf);
+}
+
+/* BASE */
+
+html {
+    /* color: #626262; */
+    line-height: 1.5;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    margin: 0
+    /* font-size: .875rem; */
+}
+
+.wraps {
+    margin-top: 20px;
+    max-height:  463.5px;
+    max-width: 601px;
+    border: 2px solid black;
+}
+
+/* a {
+    color:rgb(243, 216, 66);
+} */
+
+/* a:hover {
+    text-decoration: none;
+} */
+
+/* Components */
+
+/* Screen */
+
+/* main-header */
+
+/* .main-header {
+    margin: 20px;
+} */
+
+.main-layout {
+    background-color: #30b9b3;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+.logo {
+    color: rgb(243, 216, 66);
+    font-family: monospace;
+    font-size: 1.875rem;
+}
+
+/* .nav-continer{
+    height: 100%;
+} */
+
+.hamborger {
+    display: none !important;
+}
+
+.main-header .main-nav a {
+    display: flex;
+    justify-content: center;
+    line-height: 33px;
+    font-family: montserrat, monospace;
+    color: rgb(226, 200, 49);
+    text-decoration: none;
+}
+
+.main-header .main-nav>*:not(:first-child) {
+    margin-left: 7px;
+}
+
+.main-header .main-nav>*:not(:last-child) {
+    margin-right: 7px;
+}
+
+.main-header .main-nav a:hover {
+    box-shadow: inset 0px -16px 0px -10px rgb(212, 123, 22);
+    color: rgb(212, 123, 22);
+}
+
+.curr-page {
+    box-shadow: inset 0px -16px 0px -10px rgb(212, 123, 22);
+}
+
+/* main-container */
+
+.main-container {
+    height: 300px;
+}
+
+.main {
+    max-width: 600px;
+    margin: 0 auto;
+    flex-direction: row;
+}
+
+.canvas-container {
+    background-color: burlywood;
+    margin: 12px;
+}
+
+/* main-footer */
+
+.main-footer {
+    background-color: #30b9b3;
+    height: 103.5px;
+    max-width: 600px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.footer {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.small {
+    font-family: montserrat, monospace;
+    font-size: 0.8em;
+}
+
+/* Helpers */
+
+.flex {
+    display: flex;
+}
+
+.flex.space-between {
+    justify-content: space-between;
+}
+
+.flex.align-center {
+    align-items: center;
+}
+
+.clean-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
