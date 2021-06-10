@@ -70,16 +70,17 @@
                     <!-- <div class="text-box" id="text1"></div> -->
                 </div>
                 <div class="editing-board">
-                    <input type="text" id="textInput1" name="add-caption" placeholder="Add caption"
+                    <input type="text" id="textInput1" name="add-caption" placeholder="Add caption"autocomplete="off"
+
                         oninput="drawText(this.value, 50, 50)"></imput>
                     <button class="btn" name="exchanging-lines"><img class="icon"
                             src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></img></button>
                     <button class="btn" name="add-line" onclick="addLine()"><img class="icon"
                             src="icons/add.png"></img></button>
                     <button class="btn" name="trash" onclick="deleteLine()"><img class="icon" src="icons/trash.png"></img></button>
-                    <button class="btn" name="plus-size-font"><img class="icon"
+                    <button class="btn" name="plus-size-font"onclick="plusSize(10)"><img class="icon"
                             src="icons/increase font - icon.png"></img></button>
-                    <button class="btn" name="minus-size-fontplus-size-font"><img class="icon"
+                    <button class="btn" name="minus-size-fontplus-size-font" onclick="minusSize(-10)"><img class="icon"
                             src="icons/decrease font - icon.png"></img></button>
                     <button class="btn" name="align-left"><img class="icon"
                             src="icons/align-to-left.png"></img></button>
