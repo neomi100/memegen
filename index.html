@@ -6,23 +6,55 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Document</title>
+    <title>Memegen</title>
 </head>
 
 <body>
-
+    
     <!--HOME -->
 
-    <div class="wraps">
+    <div class="wraps home">
         <header class="main-header">
             <div class="main-layout flex space-between nav-continer align-center">
                 <div class="logo">memegen</div>
                 <span><button class="material-icons hamborger btn-menu">
                         lunch_dining</button></span>
                 <ul class="main-nav clean-list flex align-center">
-                    <li><a href="#">Home</a></li>
+                    <li class="page1 curr-page"><a href="#">Home</a></li>
                     |
-                    <li class="curr-page"><a href="editor.html">Editor</a></li>
+                    <li class="page2"><a href="#" onclick="pageEditor()">Editor</a></li>
+                    |
+                    <li class="page3"><a href="gallery.html">My Gallery</a></li>
+                    |
+                    <li><a href="#">About</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <section class="grid-container main-container main"></section>
+        </main> 
+
+        <footer class="main-footer flex">
+            <div class="footer flex">
+                <div class="align-center logo">memegen</div>
+                <small class="small">All Rights Reserved 2021</small>
+            </div>
+        </footer>
+    </div>
+    
+    <!--HOME -->
+
+    <!--EDITOR -->
+    <div class="wraps editor-screen">
+        <header class="main-header">
+            <div class="main-layout flex space-between nav-continer align-center">
+                <div class="logo">memegen</div>
+                <span><button class="material-icons hamborger btn-menu"> lunch_dining</button></span>
+                <ul class="main-nav clean-list flex align-center">
+                    <li><a href="#" onclick="pageHome()">Home</a></li>
+                    |
+                    <li class="curr-page"><a href="#">Editor</a></li>
                     |
                     <li><a href="gallery.html">My Gallery</a></li>
                     |
@@ -31,28 +63,42 @@
             </div>
         </header>
 
-        <main>
-            <!-- name='images/1.jpg' onclick="getImg(this)" -->
-            <section class="grid-container main-container main">
-                <article class="box img-1" id='images/1.jpg' onclick="getImg(this)"></article>
-                <article class="box img-2"></article>
-                <article class="box img-3"></article>
-                <article class="box img-4"></article>
-                <article class="box img-5"></article>
-                <article class="box img-6"></article>
-                <article class="box img-7"></article>
-                <article class="box img-8"></article>
-                <article class="box img-9"></article>
-                <article class="box img-10"></article>
-                <article class="box img-11"></article>
-                <article class="box img-12"></article>
-                <article class="box img-13"></article>
-                <article class="box img-14"></article>
-                <article class="box img-15"></article>
-                <article class="box img-16"></article>
-                <article class="box img-17"></article>
-                <article class="box img-18"></article>
-            </section>
+        <main class="main-container">
+            <div class="main flex align-center">
+                <div class="canvas-container">
+                    <canvas id="my-canvas" height="270" width="270"></canvas>
+                    <!-- <div class="text-box" id="text1"></div> -->
+                </div>
+                <div class="editing-board">
+                    <input type="text" id="textInput1" name="add-caption" placeholder="Add caption"
+                        oninput="drawText(this.value, 50, 50)"></imput>
+                    <button class="btn" name="exchanging-lines"><img class="icon"
+                            src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></img></button>
+                    <button class="btn" name="add-line" onclick="addLine()"><img class="icon"
+                            src="icons/add.png"></img></button>
+                    <button class="btn" name="trash" onclick="deleteLine()"><img class="icon" src="icons/trash.png"></img></button>
+                    <button class="btn" name="plus-size-font"><img class="icon"
+                            src="icons/increase font - icon.png"></img></button>
+                    <button class="btn" name="minus-size-fontplus-size-font"><img class="icon"
+                            src="icons/decrease font - icon.png"></img></button>
+                    <button class="btn" name="align-left"><img class="icon"
+                            src="icons/align-to-left.png"></img></button>
+                    <button class="btn" name="align-center"><img class="icon"
+                            src="icons/center-text-alignment.png"></img></button>
+                    <button class="btn" name="align-right"><img class="icon"
+                            src="icons/align-to-right.png"></img></button>
+                    <select class="select" onchange="hi">
+                        <option value="triangle">????</option>
+                        <option value="rect">Rect</option>
+                        <option value="circle">Circle</option>
+                    </select>
+                    <button class="btn" name="text-stroke"><img class="icon" src="icons/text stroke.png"></img></button>
+                    <button class="btn" type="color" name="color"><img class="icon"
+                            src="icons/paint-board-and-brush.png"></img></button>
+                    <input type="stickers" name="add-stickers"></imput>
+                    <button class="btn share" name="share">Share</button>
+                </div>
+            </div>
         </main>
 
         <footer class="main-footer flex">
@@ -62,67 +108,12 @@
             </div>
         </footer>
     </div>
-    <!--HOME -->
-
-    <!--EDITOR -->
-    <div class="wraps">
-        <header class="main-header">
-            <div class="main-layout flex space-between nav-continer align-center">
-                <div class="logo">memegen</div>
-                <span><button class="material-icons hamborger btn-menu"> lunch_dining</button></span>
-                <ul class="main-nav clean-list flex align-center">
-                    <li><a href="#">Home</a></li>
-                    |
-                    <li class="curr-page"><a href="editor.html">Editor</a></li>
-                    |
-                    <li><a href="gallery.html">My Gallery</a></li>
-                    |
-                    <li><a href="#">About</a></li>
-                </ul>
-            </div>
-        </header>
-    
-        <main class="main-container">
-            <div class="main flex align-center">
-            <div class="canvas-container">
-                <canvas id="my-canvas" height="270" width="270"></canvas>
-            </div>
-            <form class="editing-board">
-                <input type="text" name="add-caption" placeholder="Add caption"></imput>
-                <button class="btn" name="exchanging-lines"><img class="icon" src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></img></button>
-                <button class="btn" name="add-line"><img class="icon" src="icons/add.png"></img></button>
-                <button class="btn" name="trash"><img class="icon" src="icons/trash.png"></img></button>
-                <button class="btn" name="plus-size-font"><img class="icon" src="icons/increase font - icon.png"></img></button>
-                <button class="btn" name="minus-size-fontplus-size-font"><img class="icon" src="icons/decrease font - icon.png"></img></button>
-                <button class="btn" name="align-left"><img class="icon" src="icons/align-to-left.png"></img></button>
-                <button class="btn" name="align-center"><img class="icon" src="icons/center-text-alignment.png"></img></button>
-                <button class="btn" name="align-right"><img class="icon" src="icons/align-to-right.png"></img></button>
-                <select class = "select" onchange="hi">
-                    <option value="triangle">????</option>
-                    <option value="rect">Rect</option>
-                    <option value="circle">Circle</option>
-                </select>
-                <button class="btn" name="text-stroke"><img class="icon" src="icons/text stroke.png"></img></button>
-                <button class="btn" type="color" name="color"><img class="icon" src="icons/paint-board-and-brush.png"></img></button>
-                <input type="stickers" name="add-stickers"></imput>
-                <button class="btn share" name="share">Share</button>
-         </form>
-    </div>
-        </main>
-    
-        <footer class="main-footer flex">
-            <div  class="footer flex">
-            <div class="align-center logo">memegen</div>
-            <small class="small">All Rights Reserved 2021</small>
-            </div>
-        </footer>
-    </div>
     <!--EDITOR -->
     <!--GALLERY -->
     <!--GALLERY -->
 
 
-    <script src="js/util.js"></script>
+    <!-- <script src="js/util.js"></script> -->
     <script src="js/storeg.js"></script>
     <script src="js/service.js"></script>
     <script src="js/control.js"></script>

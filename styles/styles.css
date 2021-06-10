@@ -25,28 +25,17 @@ body {
 
 .wraps {
     margin-top: 20px;
-    max-height:  463.5px;
+    max-height: 463.5px;
     max-width: 601px;
     border: 2px solid black;
+    border-radius: 10px;
 }
-
-/* a {
-    color:rgb(243, 216, 66);
-} */
-
-/* a:hover {
-    text-decoration: none;
-} */
 
 /* Components */
 
-/* Screen */
+/* Screen 1 */
 
 /* main-header */
-
-/* .main-header {
-    margin: 20px;
-} */
 
 .main-layout {
     background-color: #30b9b3;
@@ -60,6 +49,10 @@ body {
     font-family: monospace;
     font-size: 1.875rem;
 }
+
+/* .main-header {
+    margin: 20px;
+} */
 
 /* .nav-continer{
     height: 100%;
@@ -95,20 +88,63 @@ body {
     box-shadow: inset 0px -16px 0px -10px rgb(212, 123, 22);
 }
 
+/* main-footer */
+
+.main-footer {
+    background-color: #30b9b3;
+    height: 103.5px;
+    max-width: 600px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.footer {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.small {
+    font-family: montserrat, monospace;
+    font-size: 0.8em;
+}
+
+/* Screen 2 */
+
+.editor-screen {
+    display: none;
+}
+
 /* main-container */
+
 .grid-container {
-    width: 600px;
+    /* width: 600px;
     height: 466px;
+    padding: 7px; */
     display: grid;
-    gap: 20px;
+    gap: 5px;
+    /* grid-column: repeat(auto-fit, minmax(100px, 1fr));  */
     grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    /* grid-template-columns: repeat(3,  1fr); */
+    grid-auto-flow: dense;
+}
+
+/* .box { */
+    /* width: 185px;
+     height: 170px; */
     
+/* } */
+
+img {
+    cursor: pointer;
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+   
+    /* object-fit: contain; */
 }
-.box{
-    width: 185px;
-    height: 170px;
-}
-.img-1{
+
+/* .img-1{
     background-image: url("../images/1.jpg");
     background-size: cover;
 }
@@ -183,8 +219,7 @@ body {
 .img-18{
     background-image: url("../images/18.jpg");
     background-size: cover;
-}
-
+} */
 
 /* main-container editor */
 
@@ -198,37 +233,19 @@ body {
     max-width: 600px;
     margin: 0 auto;
     flex-direction: row;
+    background-color: rgb(248, 238, 222);
 }
 
 .canvas-container {
     background-color: burlywood;
     margin: 12px;
-   
+    position: relative;
 }
-.icon{
+
+.icon {
     width: 30px;
     height: 30px;
-}
-
-/* main-footer */
-
-.main-footer {
-    background-color: #30b9b3;
-    height: 103.5px;
-    max-width: 600px;
-    margin: 0 auto;
-    justify-content: center;
-}
-
-.footer {
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-}
-
-.small {
-    font-family: montserrat, monospace;
-    font-size: 0.8em;
+    border-radius: 10px;
 }
 
 /* Helpers */
