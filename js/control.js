@@ -1,112 +1,159 @@
 'use strict'
 
+var gImgs = [{ id: 1, src: 'images/1.jpg' },
+{ id: 2, src: 'images/2.jpg' },
+{ id: 3, src: 'images/3.jpg' },
+{ id: 4, src: 'images/4.jpg' },
+{ id: 5, src: 'images/5.jpg' },
+{ id: 6, src: 'images/6.jpg' },
+{ id: 7, src: 'images/7.jpg' },
+{ id: 8, src: 'images/8.jpg' },
+{ id: 9, src: 'images/9.jpg' },
+{ id: 10, src: 'images/10.jpg' },
+{ id: 11, src: 'images/11.jpg' },
+{ id: 12, src: 'images/12.jpg' },
+{ id: 13, src: 'images/13.jpg' },
+{ id: 14, src: 'images/14.jpg' },
+{ id: 15, src: 'images/15.jpg' },
+{ id: 16, src: 'images/16.jpg' },
+{ id: 17, src: 'images/17.jpg' },
+{ id: 18, src: 'images/18.jpg' },
+];
 var gCanvas;
 var gCtx;
-var gImgCtx;
-var gImg;
-var gAddCaption = 0
+var gCurrSrc;
+var gStrokeColor = 'black'
+var gFillColor = 'white'
+var gY_list = []
+var gY_val
 
-var gTxtSize = 20
 
-
-
-init()
 function init() {
     gCanvas = document.getElementById('my-canvas');
     gCtx = gCanvas.getContext('2d');
-    gImgCtx = gCanvas.getContext('2d');
     renderImags()
-
 }
-// רנדר גלריה
+
 function renderImags() {
     var strImg = gImgs.map((img) => {
-        // console.log(gMeme.selectedImgId);
-        gMeme.selectedImgId = img.id
         return `<img src="${img.src}"onclick="drawImgOnCanvas('${img.src}')"/>`
-        //    return` <article><img src="${img.src}" onclick="drawImgOnCanvas('${img.src}')"></img></article>`
     });
-    // console.log(gMeme.selectedImgId);
     document.querySelector('.grid-container').innerHTML = strImg.join('')
 }
-
-var gCurrSrc;
 
 function drawImgOnCanvas(src) {
     var img = new Image()
     img.src = src;
     img.onload = () => {
-
-        gImgCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+        gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
     }
-    
     gCurrSrc = img.src
     pageEditor()
 }
 
+function currSrs() {
+    return gCurrSrc
+}
+function canvas() {
+    return gCanvas
+}
+function ctx() {
+    return gCtx
+}
 
-function drawText(text, x, y) {
+function drawImgOnCanvasTwo(src) {
+    var img = new Image()
+    img.src = src;
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height)
+    gCurrSrc = img.src
+}
 
-    if (gAddCaption === 1) {
-        y += 160
-        gMeme.lines[1].txt = text
-        console.log('hi', gMeme.lines[1].txt, gAddCaption);
+function render() {
+    gMeme = getem()
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+    drawImgOnCanvasTwo(gCurrSrc)
+    for (var i = 0; i < gMeme.lines.length; i++) {
+        drawLine(gMeme.lines[i].txt, 50, gMeme.lines[i].y)
     }
-    if (gAddCaption === 2) {
-        y = 130
+}
 
-    }
-    // getIndex()
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = 'black'
-    gCtx.fillStyle = 'white'
-    gCtx.font = `${gTxtSize}px Arial`
-    // gCtx.textAlign = 'center'
+function drawLine(text, x, y) {
+    gTextSize = textSize()
+    gTextAlign = textAlign()
+    gfont = font()
+    gCtx.lineWidth = 4
+    gCtx.strokeStyle = gStrokeColor
+    gCtx.fillStyle = gFillColor
+    gCtx.font = `${gTextSize}px  ${gfont}`
+    gCtx.textAlign = gTextAlign
     gCtx.fillText(text, x, y)
     gCtx.strokeText(text, x, y)
-    gCtx.save()
-
-    gMeme.selectedLineIdx = y
-    gMeme.lines[0].txt = text
-    // console.log('hi',gMeme.lines.txt);
-    // gMeme.lines.size=gCtx.lineWidth
-    console.log(gMeme.lines[0].txt = text, 'first');
-
-}
-
-function fontSize() {
-
-}
-
-function minusSize(num) {
-    deleteLine()
-    gTxtSize += num
-    if(gTxtSize < 10) gTxtSize = 20
-    console.log(gTxtSize);
-}
-function plusSize(num) {
-    deleteLine()
-    gTxtSize += num
-    console.log(gTxtSize);
-
 }
 
 function addLine() {
+    gMeme=getem()   
+    if (gMeme.lines.length > 3) {
+        gY_val  = gCanvas.height*0.50
+        gY_list[gMeme.lines.length-1] = gY_val
+    } else {
+            switch (gMeme.lines.length)
+                {
+                case 1:
+                    gY_val  = gCanvas.height*0.90
+                    gY_list[gMeme.lines.length-1] = gY_val
+                break;
+                case 2:
+                    gY_val  = gCanvas.height*0.55
+                    gY_list[gMeme.lines.length-1] = gY_val
+                break;
+                default:
+            }
+    }
+    gMeme.lines.push({ txt: '', y: gY_val})
     document.getElementById('textInput1').value = '';
-    gAddCaption++
-    gMeme.selectedLineIdx = gAddCaption
+    gMeme.selectedLineIdx++
 }
-function deleteLine() {
-    console.log(gCurrSrc);
-    // console.log(gImgs[gMeme.selectedImgId]);
-    drawImgOnCanvas(gCurrSrc)
-    // gAddCaption=0
-    // // console.log('hihi',gAddCaption);
-    // gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
-    // var filt= gMeme.lines.filter((line) =>{
-    //     console.log(filt, 'filt');
-    //     return  line.txt=true
-    // })
+
+function changeFocusLine() {
+    gMeme = getem()
+    gMeme.selectedLineIdx += 1
+    gMeme.selectedLineIdx = gMeme.selectedLineIdx % gMeme.lines.length
+    gMeme.selectedLineIdx = gMeme.selectedLineIdx
+    document.getElementById('textInput1').value = gMeme.lines[gMeme.selectedLineIdx].txt;
+}
+
+function onMoveLine(num) {
+    moveLine(num)
+}
+function onFontSize(num) {
+    fontSize(num)
+}
+function onAlignment(manner) {
+    alignment(manner)
+}
+function onFontStyle(font) {
+    fontStyle(font)
+}
+function onTrash() {
+    trash()
+}
+function color(position, color) {
+    if (position === 'srtoke')
+        gStrokeColor = color
+    if (position === 'fill')
+        gFillColor = color
+    render()
+}
+
+function downloadCanvas(elLink) {
+    const data = gCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'meme-gen'
+}
+
+function toggleMenu() {
+    console.log('hi');
+    document.querySelector('.main-nav').classList.toggle('menu-open');
 }
 
 // PAGES
@@ -116,9 +163,13 @@ function pageHome() {
 }
 
 function pageEditor() {
+    gMeme = getem()
+    gMeme.selectedLineIdx = 0
     document.getElementById('textInput1').value = '';
     document.querySelector('.editor-screen').style.display = 'block'
     document.querySelector('.home').style.display = 'none'
+    for (var i = 0; i < gMeme.lines.length; i++) {
+        gMeme.lines[i].txt = ''
+    }
 }
-
 

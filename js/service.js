@@ -1,72 +1,119 @@
 'use strict'
 
-var gImgs = [{ id: 1, src: 'images/1.jpg', keywords: ['happy'], isVisible: true },
-{ id: 2, src: 'images/2.jpg', keywords: ['happy'] },
-{ id: 3, src: 'images/3.jpg', keywords: ['happy'] },
-{ id: 4, src: 'images/4.jpg', keywords: ['happy'] },
-{ id: 5, src: 'images/5.jpg', keywords: ['happy'] },
-{ id: 6, src: 'images/6.jpg', keywords: ['happy'] },
-{ id: 7, src: 'images/7.jpg', keywords: ['happy'] },
-{ id: 8, src: 'images/8.jpg', keywords: ['happy'] },
-{ id: 9, src: 'images/9.jpg', keywords: ['happy'] },
-{ id: 10, src: 'images/10.jpg', keywords: ['happy'] },
-{ id: 11, src: 'images/11.jpg', keywords: ['happy'] },
-{ id: 12, src: 'images/12.jpg', keywords: ['happy'] },
-{ id: 13, src: 'images/13.jpg', keywords: ['happy'] },
-{ id: 14, src: 'images/14.jpg', keywords: ['happy'] },
-{ id: 15, src: 'images/15.jpg', keywords: ['happy'] },
-{ id: 16, src: 'images/16.jpg', keywords: ['happy'] },
-{ id: 17, src: 'images/17.jpg', keywords: ['happy'] },
-{ id: 18, src: 'images/18.jpg', keywords: ['happy'] },
-];
-
-var gKeywords = { 'happy': 12, 'funny puk': 1 }
+var gTextSize = 70
+var gTextAlign = 'left'
+var gfont = 'impac'
 
 
 
 var gMeme = {
-    selectedImgId: 5,
     selectedLineIdx: 0,
-    // קאונטר
-    lines: [
-        {
-            txt: 'I never eat Falafel',
-            isVisible: true,
-            size: 2,
-            align: 'left',
-            color: 'red'
-        },
-        {
-            txt: '',
-            isVisible: true,
-            size: 2,
-            align: 'left',
-            color: 'red'
-        }
-    ]
+    lines: [{ txt: '', y: 150}]
 }
 
+function getem() {
+    return gMeme
+}
+function textSize() {
+    return gTextSize
+}
+function textAlign() {
+    return gTextAlign
+}
+function font() {
+    return gfont
+}
 
-// const gMeme = {
-//     lines: [
-//         {
-//             text: 'daasd',
-//             size: 19
-//         },
-//         {
-//             text: 'text2',
-//                 size: 23
-//         }
-//     ]
-// }
+function moveLine(num) {
+    gMeme.lines[gMeme.selectedLineIdx].y += num
+    render()
+}
 
-// how to use 
+function alignment(manner) {
+    switch (manner) {
+        case 'right':
+            gTextAlign = 'right'
+            break;
+        case 'center':
+            gTextAlign = 'center'
+            break;
+        case 'left':
+            gTextAlign = 'left'
+            break;
+    }
+    render()
+}
+function fontStyle(font) {
+    switch (font) {
+        case 'impac':
+            gfont = 'impac'
+            break;
+        case 'lator':
+            gfont = 'lator'
+            break;
+        case 'chmpagana':
+            gfont = 'chmpagana'
+            break;
+        case 'logo':
+            gfont = 'logo'
+            break;
+    }
+    render()
+}
 
-// first item
-gMeme.lines[0].text
-gMeme.lines[0].size
-// second item
-gMeme.lines[1].text
-gMeme.lines[1].size
+function fontSize(num) {
+    if (num === 10) {
+        gTextSize += num
+        if (gTextSize > 150) gTextSize = 140
+        render()
+    }
+    if (num === -10) {
+        gTextSize += num
+        if (gTextSize < 10) gTextSize = 20
+        render()
+    }
+}
+
+function trash() {
+    // if(!gMeme.lines[0].isVisible){
+    //     console.log('hi');
+    //     drawLine(gMeme.lines[gMeme.selectedLineIdx].txt, 50, gMeme.lines[gMeme.selectedLineIdx].y) 
+    // }
+    // if(!gMeme.lines[1].isVisible){
+    //     console.log('hi2');
+    //     drawLine(gMeme.lines[gMeme.selectedLineIdx].txt, 50, gMeme.lines[gMeme.selectedLineIdx].y) 
+    // }
+    gCurrSrc = currSrs()
+    gCanvas = canvas()
+    gCtx = ctx()
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+    drawImgOnCanvas(gCurrSrc)
+    gMeme.selectedLineIdx = 0
+    for (var i = 0; i < gMeme.lines.length; i++) {
+        gMeme.lines[i].txt = ''
+    }
+}
+
+function getText(text, x, y) {
+    gCurrSrc = currSrs()
+    gCanvas = canvas()
+    gCtx = ctx()
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
+    drawImgOnCanvasTwo(gCurrSrc)
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
+    if (gMeme.lines[gMeme.selectedLineIdx].y !== null) {
+        y = gMeme.lines[gMeme.selectedLineIdx].y
+    } else {
+        gMeme.lines[gMeme.selectedLineIdx].y = y
+    }
+    for (var i = 0; i < gMeme.lines.length; i++) {
+        if (gMeme.selectedLineIdx !== i) {
+            drawLine(gMeme.lines[i].txt, x, gMeme.lines[i].y)
+        } else {
+            drawLine(text, x, gMeme.lines[gMeme.selectedLineIdx].y)
+        }
+    }
+}
+
 
 

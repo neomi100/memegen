@@ -9,113 +9,106 @@
     <title>Memegen</title>
 </head>
 
-<body>
-    
+<body onload="init()">
     <!--HOME -->
-
     <div class="wraps home">
         <header class="main-header">
             <div class="main-layout flex space-between nav-continer align-center">
                 <div class="logo">memegen</div>
-                <span><button class="material-icons hamborger btn-menu">
-                        lunch_dining</button></span>
+                <span><button class="hamborger" onclick="toggleMenu()">☰</button></span>
                 <ul class="main-nav clean-list flex align-center">
                     <li class="page1 curr-page"><a href="#">Home</a></li>
                     |
                     <li class="page2"><a href="#" onclick="pageEditor()">Editor</a></li>
                     |
-                    <li class="page3"><a href="gallery.html">My Gallery</a></li>
-                    |
-                    <li><a href="#">About</a></li>
+                    <li class="page3"><a href="#">My Gallery</a></li>
                 </ul>
             </div>
         </header>
-
         <main>
-            <section class="grid-container main-container main"></section>
-        </main> 
-
+            <section class="grid-container main scroll"></section>
+        </main>
         <footer class="main-footer flex">
             <div class="footer flex">
                 <div class="align-center logo">memegen</div>
-                <small class="small">All Rights Reserved 2021</small>
+                <small class="small">© Neomi Goldberg</small>
             </div>
         </footer>
     </div>
-    
     <!--HOME -->
-
     <!--EDITOR -->
     <div class="wraps editor-screen">
         <header class="main-header">
             <div class="main-layout flex space-between nav-continer align-center">
                 <div class="logo">memegen</div>
-                <span><button class="material-icons hamborger btn-menu"> lunch_dining</button></span>
+                <span><button class="hamborger" onclick="toggleMenu()">☰</button></span>
                 <ul class="main-nav clean-list flex align-center">
                     <li><a href="#" onclick="pageHome()">Home</a></li>
                     |
                     <li class="curr-page"><a href="#">Editor</a></li>
                     |
-                    <li><a href="gallery.html">My Gallery</a></li>
-                    |
-                    <li><a href="#">About</a></li>
+                    <li><a href="#">My Gallery</a></li>
                 </ul>
             </div>
-        </header>
-
-        <main class="main-container">
-            <div class="main flex align-center">
+        </header> 
+        <main class="main flex align-center">
                 <div class="canvas-container">
-                    <canvas id="my-canvas" height="270" width="270"></canvas>
-                    <!-- <div class="text-box" id="text1"></div> -->
+                    <canvas id="my-canvas" height="600" width="610"></canvas>
                 </div>
                 <div class="editing-board">
-                    <input type="text" id="textInput1" name="add-caption" placeholder="Add caption"autocomplete="off"
-
-                        oninput="drawText(this.value, 50, 50)"></imput>
-                    <button class="btn" name="exchanging-lines"><img class="icon"
-                            src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></img></button>
-                    <button class="btn" name="add-line" onclick="addLine()"><img class="icon"
+                    <input class="btn-1" type="text" id="textInput1" name="add-caption" placeholder="Add caption"
+                        autocomplete="off" oninput="getText(this.value, 100, 150)"></imput>
+                    <button class="btn-2 add" name="add-line" onclick="addLine()"><img class="icon"
                             src="icons/add.png"></img></button>
-                    <button class="btn" name="trash" onclick="deleteLine()"><img class="icon" src="icons/trash.png"></img></button>
-                    <button class="btn" name="plus-size-font"onclick="plusSize(10)"><img class="icon"
+                    <button class="btn-3" name="move-lines" onclick="onMoveLine(-10)"><img class="icon"
+                            src="icons/up-opposite-arrow-.png"></img></button>
+                    <button class="btn-4" name="move-lines" onclick="onMoveLine(10)"><img class="icon"
+                            src="icons/down-opposite-arrow-.png"></img></button>
+                    <button class="btn-5" name="exchanging-lines" onclick="changeFocusLine()"><img class="icon"
+                            src="icons/up-and-down-opposite-double-arrows-side-by-side.png"></img></button>
+                    <button class="btn-6" name="plus-size-font" onclick="onFontSize(10)"><img class="icon"
                             src="icons/increase font - icon.png"></img></button>
-                    <button class="btn" name="minus-size-fontplus-size-font" onclick="minusSize(-10)"><img class="icon"
-                            src="icons/decrease font - icon.png"></img></button>
-                    <button class="btn" name="align-left"><img class="icon"
+                    <button class="btn-7" name="minus-size-fontplus-size-font" onclick="onFontSize(-10)"><img
+                            class="icon" src="icons/decrease font - icon.png"></img></button>
+                    <button class="btn-8" name="align-left" onclick="onAlignment('left')"><img class="icon"
                             src="icons/align-to-left.png"></img></button>
-                    <button class="btn" name="align-center"><img class="icon"
+                    <button class="btn-9" name="align-center" onclick="onAlignment('center')"><img class="icon"
                             src="icons/center-text-alignment.png"></img></button>
-                    <button class="btn" name="align-right"><img class="icon"
+                    <button class="btn-10" name="align-right" onclick="onAlignment('right')"><img class="icon"
                             src="icons/align-to-right.png"></img></button>
-                    <select class="select" onchange="hi">
-                        <option value="triangle">????</option>
-                        <option value="rect">Rect</option>
-                        <option value="circle">Circle</option>
+                    <div class="btn-11" style="position:relative; display:inline-block icon">
+                        <button type="button" class="btn-secondary herramienta"><i class="material-icons"><img
+                                    class="icon" src="icons/text stroke.png"></img></i></button>
+                        <input type="color" value="#ff0000" onclick="color('srtoke',this.value)"
+                            style="opacity:0; position:absolute; left:0;top:0;width:100%" />
+                    </div>
+                    <div class="btn-12" style="position:relative; display:inline-block icon">
+                        <button type="button" class="btn-secondary herramienta"><i class="material-icons"><img
+                                    class="icon" src="icons/paint-board-and-brush.png"></img></i></button>
+                        <input type="color" value="#ff0000" oninput="color('fill',this.value)"
+                            style="opacity:0; position:absolute; left:0;top:0;width:100% " />
+                    </div>
+                    <select class="select" style="height: 30px" onFontStyle(this.value)>
+                        <option value="impac">impac</option>
+                        <option value="lator">lator</option>
+                        <option value="chmpagana">chmpagana</option>
+                        <option value="logo">logo</option>
                     </select>
-                    <button class="btn" name="text-stroke"><img class="icon" src="icons/text stroke.png"></img></button>
-                    <button class="btn" type="color" name="color"><img class="icon"
-                            src="icons/paint-board-and-brush.png"></img></button>
-                    <input type="stickers" name="add-stickers"></imput>
-                    <button class="btn share" name="share">Share</button>
+                    <button class="btn-14" name="trash" onclick="onTrash()"><img class="icon"
+                            src="icons/trash.png"></img></button>
+                    <button class="btn-15"><a href="#" onclick="downloadCanvas(this)"
+                            download="file-name">Download</a></button>
                 </div>
             </div>
         </main>
-
         <footer class="main-footer flex">
             <div class="footer flex">
                 <div class="align-center logo">memegen</div>
-                <small class="small">All Rights Reserved 2021</small>
+                <small class="small">© Neomi Goldberg</small>
             </div>
         </footer>
     </div>
     <!--EDITOR -->
-    <!--GALLERY -->
-    <!--GALLERY -->
-
-
-    <!-- <script src="js/util.js"></script> -->
-    <script src="js/storeg.js"></script>
     <script src="js/service.js"></script>
     <script src="js/control.js"></script>
 </body>
