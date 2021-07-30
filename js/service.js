@@ -75,14 +75,6 @@ function fontSize(num) {
 }
 
 function trash() {
-    // if(!gMeme.lines[0].isVisible){
-    //     console.log('hi');
-    //     drawLine(gMeme.lines[gMeme.selectedLineIdx].txt, 50, gMeme.lines[gMeme.selectedLineIdx].y) 
-    // }
-    // if(!gMeme.lines[1].isVisible){
-    //     console.log('hi2');
-    //     drawLine(gMeme.lines[gMeme.selectedLineIdx].txt, 50, gMeme.lines[gMeme.selectedLineIdx].y) 
-    // }
     gCurrSrc = currSrs()
     gCanvas = canvas()
     gCtx = ctx()

@@ -73,8 +73,9 @@ function render() {
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height)
     drawImgOnCanvasTwo(gCurrSrc)
     for (var i = 0; i < gMeme.lines.length; i++) {
-        drawLine(gMeme.lines[i].txt, 50, gMeme.lines[i].y)
+        drawLine(gMeme.lines[i].txt, 100, gMeme.lines[i].y)
     }
+    saveToStorage('baba',gMeme)
 }
 
 function drawLine(text, x, y) {
